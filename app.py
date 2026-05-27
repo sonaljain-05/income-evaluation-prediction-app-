@@ -19,7 +19,7 @@ st.markdown(
 
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-img = Image.open(r"E:\data science\sup_algorithm 2\income.png")
+img = Image.open("income.png")
 st.image(img, use_container_width=True)
 
 st.markdown("<br><br>", unsafe_allow_html=True)
