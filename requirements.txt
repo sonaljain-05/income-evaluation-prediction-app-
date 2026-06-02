@@ -4,8 +4,8 @@ pandas
 scikit-learn
 matplotlib
 seaborn
-scikit-learn
 category-encoders
 xgboost
 lightgbm
 catboost
+streamlit
