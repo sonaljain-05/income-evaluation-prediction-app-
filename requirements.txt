@@ -1,11 +1,6 @@
-ipykernel
 numpy
 pandas 
 scikit-learn
-matplotlib
-seaborn
-category-encoders
-xgboost
-lightgbm
-catboost
 streamlit
+joblib
+pillow
