@@ -17,21 +17,26 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("<br><br>", unsafe_allow_html=True)
-
-img = Image.open("income.png")
-st.image(img, use_container_width=True)
-
-st.markdown("<br><br>", unsafe_allow_html=True)
-
+# BASE PATH (IMPORTANT FIX)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# IMAGE FIXED (Cloud compatible)
+img_path = os.path.join(BASE_DIR, "income.png")
+if os.path.exists(img_path):
+    img = Image.open(img_path)
+    st.image(img, use_container_width=True)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# LOAD MODELS
 model = joblib.load(os.path.join(BASE_DIR, "best_model.pkl"))
 scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
 
-try:
-    encoder = joblib.load(os.path.join(BASE_DIR, "encoder.pkl"))
-except:
+# ENCODER SAFE LOAD
+encoder_path = os.path.join(BASE_DIR, "encoder.pkl")
+if os.path.exists(encoder_path):
+    encoder = joblib.load(encoder_path)
+else:
     encoder = None
 
 st.markdown("<h1 style='text-align:center;'>💰 Income Prediction App</h1>", unsafe_allow_html=True)
@@ -65,7 +70,6 @@ with col4:
     capital_loss = st.number_input("📉 Capital Loss", 0, 99999, 0)
 
 hours_per_week = st.slider("⏱️ Hours per week", 0, 100, 40)
-
 gender = st.radio("🚻 Gender", ["Male", "Female"])
 
 st.divider()
